@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Gotham Bold";
+  src: url('~assets/fonts/GOTHAMRND-BOLD.OTF');
+}
+
+@font-face {
+  font-family: "Gotham";
+  font-weight: 100;
+  src: url('~assets/fonts/GOTHAMRND-MEDIUM.OTF');
+}
+
+$font-primary: 'Gotham';
+$font-primary-bold: 'Gotham Bold';

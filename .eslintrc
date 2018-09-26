@@ -1,0 +1,35 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": false
+  },
+  "extends": ["airbnb", "plugin:jest/recommended"],
+  "globals": {
+    "module": true
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "import/no-extraneous-dependencies": "off",
+    "function-paren-newline": ["error", "consistent"],
+    "import/no-named-as-default": 0,
+    "max-len": ["error", 160],
+    "jsx-a11y/label-has-for": {
+      "components": [ "Label" ],
+      "required": {
+        "some": [ "nesting", "id" ]
+      },
+      "allowChildren": false
+    },
+    "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ],
+        "aspects": [ "noHref", "invalidHref", "preferButton" ]
+      }]
+  }
+}

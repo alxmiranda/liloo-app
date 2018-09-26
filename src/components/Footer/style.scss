@@ -1,0 +1,141 @@
+.footer {
+  background: $white;
+  padding: ($padding * 2) 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: $font-primary;
+
+  .box-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: $primary-dark;
+  }
+
+  @at-root
+  .footer__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @at-root
+    .footer__col {
+      width: 100%;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-bottom: ($margin + 5);
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      width: 100%;
+      height: 100px;
+      justify-content: center;
+
+      .footer__col {
+        width: auto;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @at-root
+  .footer__brand {
+    flex-direction: column;
+    align-items: center;
+
+    .brand {
+      width: 120px;
+    }
+  }
+
+  @at-root
+  .footer__contacts {
+    > div {
+      display: flex;
+      align-items: center;
+      // outline: 1px solid red;
+
+      &:last-of-type {
+        margin-left: $margin;
+      }
+    }
+    span {
+      color: $gray-medium;
+      font-size: 14px;
+      margin-left: ($margin / 2);
+    }
+  }
+
+  @at-root
+  .footer__social-media { 
+    .box-icon {
+      margin: 0 $margin;
+    }
+
+    @media screen and (min-width: 900px) {
+      .box-icon {
+        &:last-child {margin-right: 0}
+        &:first-child {margin-left: 0}
+      }
+    }
+  }
+
+  @at-root
+  .footer__infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    border-top: 1px solid $gray-light;
+
+    .container {
+      padding-top: ($padding * 2);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a {
+      text-decoration: none;
+      margin-bottom: ($margin / 2);
+    }
+
+    a,
+    small {
+      font-weight: normal;
+      color: $gray-medium;
+    }
+
+    @media screen and (min-width: 900px) {
+      height: 50px;
+      flex-direction: row;
+      justify-content: space-between;
+      
+      .container {
+        padding-top: 0;
+      }
+      
+      a {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    padding: 0;
+
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.btn {
+  padding: ($padding + 5) ($padding * 3);
+  text-align: center;
+  background: $primary;
+  font-family: $font-primary;
+  color: $white;
+  border: 0;
+  border-radius: ($radius * 10);
+  cursor: pointer;
+  transition: background .35s;
+
+  &:hover,
+  &:focus {
+    background: darken($primary, 10);
+    transition: background .35s;
+    outline: 0;
+  }
+
+  @at-root
+  &-link {
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: $white;
+    transition: color .35s;
+
+    &:hover {
+      color: $primary;
+      transition: color .35s;
+    }
+  }
+}

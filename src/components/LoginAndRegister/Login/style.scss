@@ -1,0 +1,7 @@
+.btn-login-fb {
+  background: $blue-fb;
+
+  &:hover {
+    background: darken($blue-fb, 8);
+  }
+}
