@@ -6,7 +6,7 @@ import Login from '../../components/LoginAndRegister/Login/';
 
 class LoginPage extends Component {
   componentWillReceiveProps(nextProps) {
-    if (this.props.status === 'SEND_LOGIN_SUCCESS') {
+    if (nextProps.status === 'SEND_LOGIN_SUCCESS') {
       this.props.history.push('/dashboard');
     }
   }

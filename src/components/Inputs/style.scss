@@ -10,4 +10,8 @@ input {
   &:active {
     box-shadow: inset 0px 0px 5px 0px $primary;
   }
+
+  &.input-border {
+    border: 1px solid $gray-light;
+  }
 }

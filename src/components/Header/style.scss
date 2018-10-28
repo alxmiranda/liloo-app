@@ -1,0 +1,123 @@
+.header {
+  margin-bottom: $margin;
+
+  .header__container {
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 2%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .btn--close {
+      @keyframes in {
+        0% {opacity: 0}
+        100% {opacity: 100%}
+      }
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 2;
+      animation: in;
+      animation-delay: .38s;
+    }
+
+    @media screen and (min-width: 768px) {
+      height: 80px;
+      padding: 0;
+
+      > .btn--icon {
+        display: none;
+      }
+    }
+
+    @at-root
+    .header__search {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      border: 1px solid $gray-light;
+      padding: ($padding / 2) ($padding * 2);
+      margin: $margin 0;
+      border-radius: 100px;
+
+      input {
+        padding: 0;
+        border-radius: 0;
+        flex-grow: 1;
+        color: $primary;
+        transition: color .2s;
+
+        &:focus {
+          border: none;
+          box-shadow: 0 0 0;
+          
+          &,
+          & + .btn--icon {
+            color: $primary;
+            transition: color .2s;
+          }
+        }
+      }
+
+      .btn--icon {
+        color: $gray-light;
+        transition: color .2s;
+      }
+
+      @media screen and (min-width: 768px) {
+        order: 2;
+        width: auto;
+        height: 100%;
+        flex-grow: 1;
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 0;
+        border-bottom: 0;
+        margin: 0;
+        
+        input {
+          height: 100%;
+        }
+      }
+    }
+
+    @at-root
+    .header__dynamic {
+      width: 100%;
+      padding: $padding 0;
+      margin: $margin 0;
+      display: flex;
+      justify-content: center;
+      order: 4;
+      border-top: 1px solid $gray-light;
+      border-bottom: 1px solid $gray-light;
+
+      @media screen and (min-width: 768px) {
+        width: calc(50% / 2);
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+    }
+
+    @at-root
+    .header__brand {
+      margin-right: ($margin * 2);
+      img {
+        width: 150px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+  // .menu {
+  //   display: none;
+  // }
+}

@@ -8,6 +8,7 @@
   border-radius: ($radius * 10);
   cursor: pointer;
   transition: background .35s;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -17,17 +18,130 @@
   }
 
   @at-root
-  &-link {
+  &--link {
     text-decoration: none;
     background: transparent;
     border: 0;
     padding: 0;
-    color: $white;
+    color: $primary;
     transition: color .35s;
 
     &:hover {
-      color: $primary;
+      color: darken($primary, 10);
       transition: color .35s;
+      background: transparent;
+    }
+  }
+
+  &--secondary {
+    background: $gray-light;
+    color: $gray-medium;
+
+    &:hover {
+      background: $gray-medium;
+      color: $gray-light;
+    }
+  }
+
+  &--icon {
+    border: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+    background: none;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // &--hamburguer span,
+  // &--hamburguer:before,
+  // &--hamburguer:after,
+  // &--close:before,
+  // &--close:after {
+  //   width: 100%;
+  //   height: 5px;
+  //   background: #333;
+  //   transition: transform .35s;  
+  // }
+
+  // &--hamburguer:before,
+  // &--hamburguer:after,
+  // &--close:before,
+  // &--close:after {
+  //   left: 0;
+  //   right: 0;
+  //   content: "";
+  //   position: absolute;
+  // }
+
+  // &--hamburguer:before {
+  //   top:0;
+  //   transform: translateY(2px);  
+  // }
+    
+  // &--hamburguer:after {
+  //   bottom: 0;
+  //   transform: translateY(-2px);
+  // }
+
+  // &--hamburguer:hover:before,
+  // &--hamburguer:hover:after,
+  // &--hamburguer:focus:before,
+  // &--hamburguer:focus:after {
+  //   transform: translateY(0px);
+  //   transition: transform .35s;
+  // }
+
+  // &--close {
+  //   justify-content: center;
+  //   align-content: center;
+  // }
+
+  // &--close:before,
+  // &--close:after {
+  //   transform: rotate(45deg);
+  //   top: 10px;  
+  // }
+
+  // &--close:after {
+  //   transform: rotate(-45deg);
+  // }
+
+  // &-icon {
+  //   background: $primary-dark;
+  //   display: flex;
+  //   padding: 5px;
+  //   border-radius: 10px;
+    
+  //   svg {
+  //     width: 30px;
+  //     height: 30px;
+  //     overflow: hidden;
+      
+  //     path {
+  //       fill: $primary;
+  //     }
+
+  //     circle {
+  //       fill: transparent;
+  //     }
+  //   }
+  // }
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .btn {
+    margin-left: $margin;
+
+    &:first-of-type {
+      margin-left: 0;
     }
   }
 }

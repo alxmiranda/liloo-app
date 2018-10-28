@@ -1,0 +1,199 @@
+.page-services {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    color: $gray-medium;
+    font-weight: 100;
+    font-size: 1rem;
+    border-bottom: 1px solid $gray-light;
+    padding-bottom: $padding;
+    margin: $padding 0;
+  }
+
+  @at-root
+  .page-services__aside {
+    padding: ($padding / 2) 4%;
+    background: $light;
+    border-radius: 10px;
+
+    @media screen and (min-width: 768px) {
+      padding: $padding ($padding * 2);
+      width: 420px;
+      margin-right: 4%;
+      align-self: flex-start;
+    }
+  }
+
+  .serach-serces {
+    .btn {
+      width: 100%;
+    }
+
+    @at-root
+    .serach-serces__content {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        width: 100%;
+      }
+
+      input {
+        border: 1px solid $gray-light;
+        background: $white;
+        margin-bottom: $margin;
+      }
+    }
+  }
+
+  .list-filter {
+    display: flex;
+    flex-direction: column;
+
+    @at-root
+    .list-filter__item {
+      margin-bottom: $margin;
+
+      input {
+        margin-right: ($margin / 2);
+
+        &:after {
+          content: '';
+          width: 24px;
+          height: 24px;
+          border-radius: 4px;
+          background: $white;
+        }
+      }
+      span {
+        color: $gray-medium;
+      }
+    }
+  }
+
+  .page-services__content {
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+
+    .ads {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      margin-top: $margin;
+
+      @media screen and (min-width: 768px) {
+        width: 100%;
+        flex-grow: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 0;
+      }
+
+      @at-root
+      .ads__item {
+        width: 100%;
+        margin-bottom: $margin;
+        border: 1px solid $gray-light;
+        border-radius: 5px;
+        overflow: hidden;
+
+        @media screen and (min-width: 768px) {
+          width: 48%;
+          margin-bottom: ($margin * 2);
+        }
+      }
+
+      @at-root
+      .ads__header {
+        background: $gray-light;
+        height: 150px;
+        position: relative;
+
+        .destach {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: $primary;
+          padding: ($padding / 2) ($padding) ($padding / 2) ($padding * 2);
+          margin-top: $margin;
+          border-top-right-radius: 50px;
+          border-bottom-right-radius: 50px;
+          position: absolute;
+          color: $white;
+          font-size: .95rem;
+          letter-spacing: 2px;
+        }
+
+        .perfil-thumb {
+          width: 50px;
+          height: 50px;
+          border-radius: 100%;
+          border: 2px solid $primary;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          transform: translateY(50%);
+          margin-right: $margin;
+
+          @media screen and (min-width:768px) {
+            width: 80px;
+            height: 80px;
+            margin-right: (($margin * 3) + 35px);
+          }
+        }
+      }
+
+      @at-root
+      .ads__content {
+        padding: $padding;
+
+        @media screen and (min-width:768px) {
+          padding: ($padding * 3);
+        }
+      }
+
+      @at-root
+      .ads__time {
+        color: $gray-medium;
+        margin-bottom: $margin;
+        font-size: .75rem;
+      }
+
+      .data-profissional {
+        @media screen and (min-width:768px) {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        @at-root
+        .data-profissional__description {
+          margin-bottom: $margin;
+
+          @media screen and (min-width:768px) {
+            margin-bottom: 0;
+            width: 60%;
+          }
+        }
+
+        @at-root
+        .data-profissional__name-and-rating {
+
+          @media screen and (min-width:768px) {
+            margin-bottom: 0;
+            width: 150px;
+            text-align: center;
+          }
+        }
+
+        @at-root
+        .data-profissional__rating {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

@@ -34,6 +34,19 @@
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span {
+  font-family: $font-primary;
+  color: #191919;
+}
+
 // TO DO: TRANSFORMAR NUM COMPONENT
 .title {
   font-family: $font-primary;
@@ -44,5 +57,6 @@
   }
 }
 
-// STYLE FOR COMPONENTS
+// STYLE FOR COMPONENTS AND CONTAINERS
 @import './../components/components.scss';
+@import './../containers/containers.scss';

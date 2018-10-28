@@ -6,6 +6,10 @@ import Register from '../../components/LoginAndRegister/Register/';
 
 export class RegisterPage extends Component {
 
+  componentWillMount() {
+    console.log(this.props)
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'SEND_REGISTER_SUCCESS') {
       this.props.history.push('/entrar');
@@ -36,5 +40,3 @@ export function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
-
-// export default RegisterPage;

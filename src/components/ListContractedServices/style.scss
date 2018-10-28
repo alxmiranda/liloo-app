@@ -1,0 +1,24 @@
+.list-service-contracted {
+  display: none;
+  
+  @at-root
+  .list-service-contracted__item {
+    border: 1px solid $gray-light;
+    border-radius: 20px;
+    display: flex;
+
+    figure {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid $primary;
+        border-radius: 100%;
+      }
+    }
+  }
+}

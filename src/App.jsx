@@ -14,9 +14,7 @@ const App = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <HashRouter>
-        <div className="content">
-          { getRoutes(store) }
-        </div>
+        { getRoutes(store) }
       </HashRouter>
     </ConnectedRouter>
   </Provider>

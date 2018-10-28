@@ -10,7 +10,13 @@ import Loadable from 'react-loadable';
 
 export const HomeLodable = Loadable({
   loader: () =>
-  import('components/Home' /* webpackChunkName: "Home" */),
+  import('containers/Site/Home' /* webpackChunkName: "Home" */),
+  loading: () => <div>Loading</div>,
+});
+
+export const PageProfissionalLodable = Loadable({
+  loader: () =>
+  import('containers/Site/PageProfissional' /* webpackChunkName: "PageProfissionalLodable" */),
   loading: () => <div>Loading</div>,
 });
 
@@ -26,13 +32,19 @@ export const LoginPageLodable = Loadable({
   loading: () => <div>Loading</div>,
 });
 
+export const ProfilePageLodable = Loadable({
+  loader: () =>
+  import('containers/ProfilePage' /* webpackChunkName: "ProfilePAge" */),
+  loading: () => <div>Loading</div>,
+});
+
 export default () => (
   <Switch>
     <Route exact path="/" component={HomeLodable} />
-    <Route exact path="/cadastro" component={RegisterPageLodable} />
+    <Route exact path="/profissional/" component={PageProfissionalLodable} />
+    <Route exact path="/cadastro/:id" component={RegisterPageLodable} />
     <Route exact path="/entrar" component={LoginPageLodable} />
+    <Route exact path="/dashboard" component={ProfilePageLodable} />
     {/* <Route exact path="/fundos-de-investimento" component={InvestmentFundListPageLodable} /> */}
   </Switch>
 );
-
-<Route exact path="/cadastro" component={RegisterPageLodable} />

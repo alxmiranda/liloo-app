@@ -1,22 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Lupa from './../../assets/home/lupa.png';
-import Ferramentas from './../../assets/home/ferramentas.png';
-import Balanca from './../../assets/home/balanca.png';
-import UsuarioPlus from './../../assets/home/usuario-plus.png';
-import PcEChat from './../../assets/home/pc-e-chat.png';
-import Cadeado from './../../assets/home/cadeado.png';
-import BalaoLike from './../../assets/home/balao-like.png';
-import Users from './../../assets/home/users.png';
-import Header from './../Header';
-import Footer from './../Footer';
+import Lupa from './../../../assets/home/lupa.png';
+import Ferramentas from './../../../assets/home/ferramentas.png';
+import Balanca from './../../../assets/home/balanca.png';
+import UsuarioPlus from './../../../assets/home/usuario-plus.png';
+import PcEChat from './../../../assets/home/pc-e-chat.png';
+import Cadeado from './../../../assets/home/cadeado.png';
+import BalaoLike from './../../../assets/home/balao-like.png';
+import Users from './../../../assets/home/users.png';
+import TemplateSite from './../../../components/TemplateSite';
 
 export default () => (
-  <div>
-    <Header />
+  <TemplateSite>
+    <section className="section content content--hero" />
     <section className="section content content--como-funciona">
       <div className="container">
-        <h2 className="title-page">Como o Liloo funciona??</h2>
+        <h2 className="title-page">Como o Liloo funciona?</h2>
         <div className="passo-a-passo">
           <div className="passo-a-passo__passo">
             <div className="passo-a-passo__imagem">
@@ -112,6 +111,5 @@ export default () => (
         </div>
       </div>
     </section>
-    <Footer />
-  </div>
+  </TemplateSite>
 );
