@@ -90,10 +90,6 @@ module.exports = {
       sample: `./config/environments/${process.env.NODE_ENV}/.env`,
       path: `./config/environments/${process.env.NODE_ENV}/.env`
     }),
-    // new InterpolateHtmlPlugin({
-    //   HEADER_URL: process.env.HEADER_URL,
-    //   REDIRECT_URL: process.env.REDIRECT_URL,
-    // }),
     new HtmlWebpackPlugin({
       template: path.resolve(srcDir, 'index.html'),
       inject: true,

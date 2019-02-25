@@ -2,6 +2,16 @@
   display: flex;
   flex-direction: column;
 
+  @at-root
+  .page-services__title {
+    margin: $margin 0;
+    color: $primary-dark;
+    
+    @media screen and (min-width: 768px) {
+      margin: ($margin * 4) 0;
+    }
+  }
+
   h3 {
     color: $gray-medium;
     font-weight: 100;

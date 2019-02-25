@@ -38,8 +38,8 @@ class Header extends React.Component {
           </div>
           <nav className="header__dynamic">
             <div className="btn-group">
-              <a className="btn" href="/entrar">Entrar</a>
-              <Link className="btn btn--link" to={{ hash:"#cadastrar" }} type="button">Cadastrar</Link>
+              <Link className="btn" to="entrar">Entrar</Link>
+              <Link className="btn btn--link" to="cadastrar" onClick={e => e.preventDefault()}type="button">Cadastrar</Link>
             </div>
           </nav>
           <div className="header__search">

@@ -14,7 +14,7 @@ const sendLoginLogic = createLogic({
   latest: true,
 
   process({ action }, dispatch, done) {
-    const requestURL = 'http://localhost:9002/login';
+    const requestURL = `${process.env.API_URL}/login`
     axios.post(requestURL, {
       email: action.params.email,
       senha: action.params.senha,

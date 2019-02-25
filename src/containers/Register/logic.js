@@ -1,10 +1,8 @@
 import { createLogic } from 'redux-logic';
 import axios from 'axios';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import requestUtil from '../../utils/requests';
 import { sendRegisterError, sendRegisterSuccess } from './actions';
 import { SEND_REGISTER } from './constants';
-import { END_POINT_LILOO } from '../../utils/api';
 
 
 // For TESTING purposes, chrome may help to bypass CORS
@@ -15,7 +13,8 @@ const sendRegisterLogic = createLogic({
   latest: true,
 
   process({ action }, dispatch, done) {
-    const requestURL = 'http://localhost:9002/cadastro';
+    console.log(process.env.API_URL);
+    const requestURL = `${process.env.API_URL}/cadastro`;
     axios.post(requestURL, {
       nome: action.params.nome,
       sobreNome: action.params.sobreNome,
