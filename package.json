@@ -4,6 +4,10 @@
   "private": true,
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "npm": "5.6.0",
+    "node": "9.5.0"
+  },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --colors --progress --inline --hot --open --env=dev --port 9000 --config ./config/webpack/config.js",
     "build:dev": "cross-env NODE_ENV=development webpack -p --colors --progress --env=dev --config ./config/webpack/config.js",
