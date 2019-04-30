@@ -45,21 +45,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader',
-        }),
+        include: /node-modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
       {
         test: /\.scss$/,
         include: srcDir,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader',
-          ],
-        }),
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         exclude: [
