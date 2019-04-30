@@ -12,7 +12,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --colors --progress --inline --hot --open --env=dev --port 9000 --config ./config/webpack/config.js",
     "build:dev": "cross-env NODE_ENV=development webpack -p --colors --progress --env=dev --config ./config/webpack/config.js",
     "build:hml": "cross-env NODE_ENV=homolog webpack -p --colors --progress --env=prod --config ./config/webpack/config.js",
-    "build": "cross-env NODE_ENV=production webpack -p --colors --progress --env=prod --config ./config/webpack/config.js",
+    "build": "echo true",
     "lint": "eslint --ext .jsx,.js src/",
     "lint:fix": "eslint --ext .jsx,.js src/ --fix",
     "stylelint": "stylelint src/**/*.scss --color",
