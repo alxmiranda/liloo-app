@@ -40,25 +40,26 @@ module.exports = {
         exclude: /node-modules/,
         enforce: 'pre',
         options: {
-          emitWarning: true,
+          emitWarning: false,
         },
       },
       {
         test: /\.css$/,
-        include: /node-modules/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
       },
       {
         test: /\.scss$/,
         include: srcDir,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'sass-loader',
+          ],
+        }),
       },
       {
         exclude: [
