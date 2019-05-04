@@ -52,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: srcDir,
+        include: `${srcDir}/**/`,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
