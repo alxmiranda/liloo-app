@@ -34,15 +34,15 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
-      {
-        test: /\.jsx$/,
-        loader: 'eslint-loader',
-        exclude: /node-modules/,
-        enforce: 'pre',
-        options: {
-          emitWarning: false,
-        },
-      },
+      // {
+      //   test: /\.jsx$/,
+      //   loader: 'eslint-loader',
+      //   exclude: /node-modules/,
+      //   enforce: 'pre',
+      //   options: {
+      //     emitWarning: false,
+      //   },
+      // },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -126,10 +126,10 @@ module.exports = {
       sourceMap: true,
       parallel: true,
     }),
-    new StyleLintPlugin({
-      emitErrors: false,
-      quiet: false,
-    }),
+    // new StyleLintPlugin({
+    //   emitErrors: false,
+    //   quiet: false,
+    // }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
