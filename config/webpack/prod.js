@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -91,10 +90,6 @@ module.exports = {
     new DotenvPlugin({
       sample: `./config/environments/${process.env.NODE_ENV}/.env`,
       path: `./config/environments/${process.env.NODE_ENV}/.env`
-    }),
-    new InterpolateHtmlPlugin({
-      HEADER_URL: process.env.HEADER_URL,
-      REDIRECT_URL: process.env.REDIRECT_URL,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(srcDir, 'index.html'),
