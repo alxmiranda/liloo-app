@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+// const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -52,19 +52,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        // include: `${srcDir}/**/`,
-        include: [
-          `${srcDir}/componets/`,
-          `${srcDir}/componets/**`,
-          `${srcDir}/containers/`,
-          `${srcDir}/containers/**`,
-          `${srcDir}/styles/`,
-          `${srcDir}/styles/**`,
-        ],
+        include: srcDir,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'style-loader',
             'css-loader',
             'sass-loader',
           ],
