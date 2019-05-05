@@ -49,6 +49,7 @@
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "interpolate-html-plugin": "^2.0.0",
+    "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.7.2",
     "path": "^0.12.7",
     "redux-logic-test": "^1.0.5",
