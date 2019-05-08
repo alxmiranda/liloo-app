@@ -52,15 +52,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: srcDir,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader',
-          ],
-        }),
+        include: `${srcDir}/**`,
+        use: [
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         exclude: [
@@ -126,7 +123,6 @@ module.exports = {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: '[name].css',
-      chunkFilename: '[id].css',
     }),
   ],
   devtool: 'source-map',
