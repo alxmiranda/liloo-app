@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -27,6 +27,17 @@ module.exports = {
     ],
     extensions: ['.js', '.jsx'],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
@@ -52,13 +63,22 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: `${srcDir}/**`,
+        exclude: /node_module/,
         use: [
-          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
+          'style-loader', // creates style nodes from JS strings
+          'css-loader', // translates CSS into CommonJS
+          'sass-loader', // compiles Sass to CSS, using Node Sass by default
         ],
       },
+      // {
+      //   test: /\.scss$/,
+      //   include: `${srcDir}/**`,
+      //   use: [
+      //     process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //     // 'sass-loader',
+      //   ],
+      // },
       {
         exclude: [
           /\.html$/,
@@ -75,55 +95,51 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: rootDir, verbose: true }),
-    new ExtractTextPlugin({
-      filename: '[name].[hash:8].css',
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.[chunkhash:8].js',
-      minChunks: function(module){
-        return module.context && module.context.indexOf("node_modules") !== -1;
-      },
-    }),
+    // new CleanWebpackPlugin(['dist'], { root: rootDir, verbose: true }),
+    // new ExtractTextPlugin({
+    //   filename: '[name].[hash:8].css',
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   filename: 'vendor.[chunkhash:8].js',
+    //   minChunks: function(module){
+    //     return module.context && module.context.indexOf("node_modules") !== -1;
+    //   },
+    // }),
     new DotenvPlugin({
       sample: `./config/environments/${process.env.NODE_ENV}/.env`,
       path: `./config/environments/${process.env.NODE_ENV}/.env`
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(srcDir, 'index.html'),
-      hash: true,
-      chunks: ['index', 'vendor'],
-      minify: {
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-        keepClosingSlash: true,
-        minifyCSS: true,
-        minifyJS: true,
-        removeAttributeQuotes: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-        removeRedundantAttributes: true,
-      },
+
+      // hash: true,
+      // chunks: ['index', 'vendor'],
+      // minify: {
+      //   collapseWhitespace: true,
+      //   collapseInlineTagWhitespace: true,
+      //   keepClosingSlash: true,
+      //   minifyCSS: true,
+      //   minifyJS: true,
+      //   removeAttributeQuotes: true,
+      //   removeComments: true,
+      //   removeEmptyAttributes: true,
+      //   removeRedundantAttributes: true,
+      // },
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      sourceMap: true,
-      parallel: true,
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   mangle: true,
+    //   sourceMap: true,
+    //   parallel: true,
+    // }),
     // new StyleLintPlugin({
     //   emitErrors: false,
     //   quiet: false,
     // }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false,
-    }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: '[name].css',
-    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static',
+    //   openAnalyzer: false,
+    // }),
   ],
   devtool: 'source-map',
 };
