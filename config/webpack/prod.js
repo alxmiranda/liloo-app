@@ -1,10 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 const webpack = require('webpack');
 
@@ -45,15 +44,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
-      // {
-      //   test: /\.jsx$/,
-      //   loader: 'eslint-loader',
-      //   exclude: /node-modules/,
-      //   enforce: 'pre',
-      //   options: {
-      //     emitWarning: false,
-      //   },
-      // },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -70,15 +60,6 @@ module.exports = {
           'sass-loader', // compiles Sass to CSS, using Node Sass by default
         ],
       },
-      // {
-      //   test: /\.scss$/,
-      //   include: `${srcDir}/**`,
-      //   use: [
-      //     process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-      //     'css-loader',
-      //     // 'sass-loader',
-      //   ],
-      // },
       {
         exclude: [
           /\.html$/,
@@ -95,7 +76,7 @@ module.exports = {
     ],
   },
   plugins: [
-    // new CleanWebpackPlugin(['dist'], { root: rootDir, verbose: true }),
+    new CleanWebpackPlugin(['dist'], { root: rootDir, verbose: true }),
     // new ExtractTextPlugin({
     //   filename: '[name].[hash:8].css',
     // }),
@@ -112,20 +93,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(srcDir, 'index.html'),
-
-      // hash: true,
-      // chunks: ['index', 'vendor'],
-      // minify: {
-      //   collapseWhitespace: true,
-      //   collapseInlineTagWhitespace: true,
-      //   keepClosingSlash: true,
-      //   minifyCSS: true,
-      //   minifyJS: true,
-      //   removeAttributeQuotes: true,
-      //   removeComments: true,
-      //   removeEmptyAttributes: true,
-      //   removeRedundantAttributes: true,
-      // },
+      hash: true,
+      chunks: ['index', 'vendor'],
+      minify: {
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        keepClosingSlash: true,
+        minifyCSS: true,
+        minifyJS: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+      },
     }),
     // new webpack.optimize.UglifyJsPlugin({
     //   mangle: true,
