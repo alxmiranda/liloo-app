@@ -9,8 +9,7 @@
     "node": "9.5.0"
   },
   "scripts": {
-    "start": "http-server -o -c1 -p 9009",
-    "prestart": "npm install -g http-server",
+    "start": "node server",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --colors --progress --inline --hot --open --env=dev --port 9000 --config ./config/webpack/config.js",
     "build:dev": "cross-env NODE_ENV=development webpack -p --colors --progress --env=dev --config ./config/webpack/config.js",
     "build:hml": "cross-env NODE_ENV=homolog webpack -p --colors --progress --env=prod --config ./config/webpack/config.js",
@@ -72,6 +71,7 @@
   },
   "dependencies": {
     "acorn": "^6.1.1",
+    "express": "^4.17.1",
     "history": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
