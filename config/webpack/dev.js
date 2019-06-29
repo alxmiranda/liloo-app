@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
 const webpack = require('webpack');
 
@@ -22,9 +21,20 @@ module.exports = {
   resolve: {
     modules: [
       path.resolve(rootDir, 'src/'),
-      'node_modules'
+      'node_modules',
     ],
     extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -33,15 +43,15 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
-      {
-        test: /\.jsx$/,
-        loader: 'eslint-loader',
-        exclude: /node-modules/,
-        enforce: 'pre',
-        options: {
-          emitWarning: true,
-        },
-      },
+      // {
+      //   test: /\.jsx$/,
+      //   loader: 'eslint-loader',
+      //   exclude: /node-modules/,
+      //   enforce: 'pre',
+      //   options: {
+      //     emitWarning: true,
+      //   },
+      // },
       {
         test: /\.css$/,
         include: /node-modules/,
@@ -75,13 +85,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.bundle.js',
-      minChunks: function (module) {
-        return module.context && module.context.indexOf("node_modules") !== -1;
-      },
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   filename: 'vendor.bundle.js',
+    //   minChunks: function (module) {
+    //     return module.context && module.context.indexOf("node_modules") !== -1;
+    //   },
+    // }),
     new CleanWebpackPlugin(['dist'], {
       root: rootDir,
       verbose: true
@@ -94,19 +104,19 @@ module.exports = {
       template: path.resolve(srcDir, 'index.html'),
       inject: true,
     }),
-    new StyleLintPlugin({
-      emitErrors: false,
-      quiet: false,
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      },
-      mangle: false,
-      sourceMap: true,
-      compress: false,
-      beautify: true,
-    }),
+    // new StyleLintPlugin({
+    //   emitErrors: false,
+    //   quiet: false,
+    // }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   output: {
+    //     comments: false
+    //   },
+    //   mangle: false,
+    //   sourceMap: true,
+    //   compress: false,
+    //   beautify: true,
+    // }),
   ],
   devServer: {
     contentBase: path.resolve(rootDir, 'dist'),

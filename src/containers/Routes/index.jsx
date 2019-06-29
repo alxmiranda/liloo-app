@@ -9,27 +9,32 @@ import Loadable from 'react-loadable';
 // });
 
 export const HomeLodable = Loadable({
-  loader: () => ('containers/Site/Home' /* webpackChunkName: "Home" */),
+  loader: () =>
+  import('containers/Site/Home' /* webpackChunkName: "Home" */),
   loading: () => <div>Loading</div>,
 });
 
 export const PageProfissionalLodable = Loadable({
-  loader: () => ('containers/Site/PageProfissional' /* webpackChunkName: "PageProfissionalLodable" */),
+  loader: () =>
+  import('containers/Site/PageProfissional' /* webpackChunkName: "PageProfissionalLodable" */),
   loading: () => <div>Loading</div>,
 });
 
 export const RegisterPageLodable = Loadable({
-  loader: () => ('containers/Register' /* webpackChunkName: "Register" */),
+  loader: () =>
+  import('containers/Register' /* webpackChunkName: "Register" */),
   loading: () => <div>Loading</div>,
 });
 
 export const LoginPageLodable = Loadable({
-  loader: () => ('containers/Login' /* webpackChunkName: "Login" */),
+  loader: () =>
+  import('containers/Login' /* webpackChunkName: "Login" */),
   loading: () => <div>Loading</div>,
 });
 
 export const ProfilePageLodable = Loadable({
-  loader: () => ('containers/ProfilePage' /* webpackChunkName: "ProfilePAge" */),
+  loader: () =>
+  import('containers/ProfilePage' /* webpackChunkName: "ProfilePAge" */),
   loading: () => <div>Loading</div>,
 });
 

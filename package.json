@@ -9,7 +9,9 @@
     "node": "9.5.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --colors --progress --inline --hot --open --env=dev --port 9000 --config ./config/webpack/config.js",
+    "start": "http-server -o -c1 -p 9009",
+    "prestart": "npm install -g http-server",
+    "start:dev": "cross-env NODE_ENV=development webpack-dev-server --colors --progress --inline --hot --open --env=dev --port 9000 --config ./config/webpack/config.js",
     "build:dev": "cross-env NODE_ENV=development webpack -p --colors --progress --env=dev --config ./config/webpack/config.js",
     "build:hml": "cross-env NODE_ENV=homolog webpack -p --colors --progress --env=prod --config ./config/webpack/config.js",
     "build": "cross-env NODE_ENV=production webpack -p --colors --progress --env=prod --config ./config/webpack/config.js",
@@ -19,6 +21,7 @@
     "stylelint:fix": "stylelint src/**/*.scss --fix"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "axios": "^0.18.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -68,11 +71,12 @@
     "webpack-dotenv-plugin": "^2.0.2"
   },
   "dependencies": {
+    "acorn": "^6.1.1",
     "history": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^3.2.0",
-    "react-loadable": "^5.3.1",
+    "react-loadable": "^5.5.0",
     "react-redux": "^5.0.6",
     "react-responsive": "^4.0.4",
     "react-router": "^4.2.0",

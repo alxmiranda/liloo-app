@@ -107,11 +107,6 @@ module.exports = {
         removeRedundantAttributes: true,
       },
     }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   mangle: true,
-    //   sourceMap: true,
-    //   parallel: true,
-    // }),
     // new StyleLintPlugin({
     //   emitErrors: false,
     //   quiet: false,
