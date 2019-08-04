@@ -7,7 +7,7 @@ import Register from '../../components/LoginAndRegister/Register/';
 export class RegisterPage extends Component {
 
   componentWillMount() {
-    console.log(this.props)
+    console.log(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -16,7 +16,12 @@ export class RegisterPage extends Component {
     }
   }
 
-  sendRegisterFun = formData => this.props.sendRegisterDispatch(formData);
+  sendRegisterFun = (formData) => {
+    const tipoCliente = (this.props.match.params.id === 'cliente' ? 'C' : 'F');
+    const dataToSend = formData;
+    dataToSend.tipoCliente = tipoCliente;
+    this.props.sendRegisterDispatch(formData);
+  };
 
   render() {
     return (

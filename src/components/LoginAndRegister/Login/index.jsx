@@ -4,6 +4,7 @@ import Template from './../index';
 import Button from './../../Buttons/';
 import Input from './../../Inputs/';
 import P from './../../Paragraph/';
+import Strong from './../../Strong';
 
 class Login extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Login extends Component {
   }
 
   render() {
+    const { error } = this.props;
     return (
       <Template title="Acesse sua conta" btnSupport={<Link className="btn btn-link" to="/cadastro">Cadastre-se</Link>}>
         <Button className="btn-login-fb">Facebook</Button>
@@ -48,6 +50,9 @@ class Login extends Component {
             onChange={this.handleChange}
           />
           <Button onClick={() => this.props.sendLogin(this.state)}>Entrar</Button>
+          <div className={`feedback ${error && 'show'}`}>
+            <Strong className={error ? 'feedback__error' : 'feedback__success'}>{error}</Strong>
+          </div>
         </div>
       </Template>
     );

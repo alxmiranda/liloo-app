@@ -7,7 +7,7 @@ app.listen(port, () => {
   console.log(`server rodando na porta ${port}`);
 });
 
-app.use(express.static('dist'))
+app.use(express.static('dist'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/dist/index.html')

@@ -1,35 +1,35 @@
 import {
-  SEND_LOGIN,
-  SEND_LOGIN_SUCCESS,
-  SEND_LOGIN_ERROR,
+  GET_USER_INFOS,
+  GET_USER_INFOS_SUCCESS,
+  GET_USER_INFOS_ERROR,
 } from './constants';
 
 const initialState = {
   loading: false,
   status: 'PENDING',
-  userInfo: {},
+  userInfos: {},
   error: '',
 };
 
-function sendLoginReducer(state = initialState, action) {
+function getUserInfosReducer(state = initialState, action) {
   switch (action.type) {
-    case SEND_LOGIN:
+    case GET_USER_INFOS:
       return {
         ...state,
         loading: true,
       };
-    case SEND_LOGIN_SUCCESS:
+    case GET_USER_INFOS_SUCCESS:
       return {
         ...state,
         loading: false,
-        userInfo: Object.assign(state, action),
-        status: 'SEND_LOGIN_SUCCESS',
+        userInfos: action.success,
+        status: 'GET_USER_INFOS_SUCCESS',
       };
-    case SEND_LOGIN_ERROR:
+    case GET_USER_INFOS_ERROR:
       return {
         ...state,
         loading: false,
-        status: 'SEND_LOGIN_ERROR',
+        status: 'GET_USER_INFOS_ERROR',
         error: action.error,
       };
     default:
@@ -37,4 +37,4 @@ function sendLoginReducer(state = initialState, action) {
   }
 }
 
-export default sendLoginReducer;
+export default getUserInfosReducer;

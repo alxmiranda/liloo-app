@@ -12,12 +12,21 @@ const initialState = {
 function sendRegisterReducer(state = initialState, action) {
   switch (action.type) {
     case SEND_REGISTER:
-      return { ...state, loading: true };
+      return {
+        ...state,
+        loading: true,
+      };
     case SEND_REGISTER_SUCCESS:
-      return { ...state, loading: false, status: 'SEND_REGISTER_SUCCESS' };
+      return {
+        ...state,
+        loading: false,
+        status: 'SEND_REGISTER_SUCCESS',
+      };
     case SEND_REGISTER_ERROR:
       return {
-        ...state, loading: false, status: 'SEND_REGISTER_ERROR',
+        ...state,
+        loading: false,
+        status: 'SEND_REGISTER_ERROR',
       };
     default:
       return state;

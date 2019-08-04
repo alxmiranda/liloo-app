@@ -18,6 +18,7 @@ class LoginPage extends Component {
   render() {
     return (
       <Login
+        error={this.props.error}
         sendLogin={this.sendLogin}
       />
     );
@@ -28,6 +29,7 @@ export const mapStateToProps = ({ sendLoginReducer }) => ({
   sendLogin: sendLoginReducer,
   status: sendLoginReducer.status,
   loadingsendLogin: sendLoginReducer.loading,
+  error: sendLoginReducer.error,
 });
 
 export function mapDispatchToProps(dispatch) {

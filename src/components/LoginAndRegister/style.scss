@@ -3,7 +3,31 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: ($padding * 6) ($padding * 2) ($padding * 4);
+  position: relative;
 
+  .feedback {
+    position: absolute;
+    opacity: 0;
+    transition: opacity .50s;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    left: 0;
+    text-align: center;
+
+    &.show {
+      opacity: 1;
+      transition: opacity .50s;
+    }
+
+    &__error {
+      color: red;
+    }
+
+    &__success {
+      color: green;
+    }
+  }
   > .btn {
     margin-top: ($margin * 2)
   }

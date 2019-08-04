@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import TemplateDashboard from './../../components/TemplateDashboard';
 import CardProfile from '../../components/CardProfile';
 import ListContractedServices from '../../components/ListContractedServices';
+import { getUserInfos } from './actions';
 
-export default class ProfilePage extends Component {
+class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileType: 'custumer',
-      profileInfo: this.props.profileInfo || '',
+      userInfos: {},
     };
   }
 
-  sendFormData = (data) => {
-    this.props.sendRegister(data);
+  componentDidMount = () => {
+    this.props.getUserInfosDispatch();
   }
+
+  componentWillReceiveProps = (nextProps) => {
+    console.log(nextProps, 'next');
+    this.setState({
+      userInfos: nextProps.userInfos,
+    });
+  }
+
+  updateUser = (data) => console.log('recebido', data);
 
   render() {
     return (
@@ -25,8 +35,8 @@ export default class ProfilePage extends Component {
           </header>
         </div>
         <CardProfile
-          profileType={this.state.profileType}
-          profileInfo={this.state.profileInfo}
+          updateUser={this.updateUser}
+          userInfos={this.state.userInfos}
         />
         <div className="container">
           <header className="header-profile">
@@ -39,3 +49,14 @@ export default class ProfilePage extends Component {
   }
 }
 
+export const mapStateToProps = ({ getUserInfosReducer }) => ({
+  userInfos: getUserInfosReducer.userInfos,
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    getUserInfosDispatch: params => dispatch(getUserInfos(params)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

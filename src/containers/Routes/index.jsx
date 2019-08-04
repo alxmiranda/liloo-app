@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
 import Loadable from 'react-loadable';
+import PrivateRoute from './private-route';
 
 // export const InvestmentFundListPageLodable = Loadable({
 //   loader: () =>
@@ -34,17 +35,17 @@ export const LoginPageLodable = Loadable({
 
 export const ProfilePageLodable = Loadable({
   loader: () =>
-  import('containers/ProfilePage' /* webpackChunkName: "ProfilePAge" */),
+  import('containers/ProfilePage' /* webpackChunkName: "ProfilePage" */),
   loading: () => <div>Loading</div>,
 });
 
 export default () => (
   <Switch>
     <Route exact path="/" component={HomeLodable} />
-    <Route exact path="/profissional/" component={PageProfissionalLodable} />
-    <Route exact path="/cadastro/:id" component={RegisterPageLodable} />
     <Route exact path="/entrar" component={LoginPageLodable} />
-    <Route exact path="/dashboard" component={ProfilePageLodable} />
+    <Route exact path="/cadastro/:id" component={RegisterPageLodable} />
+    <PrivateRoute exact path="/profissional/" component={PageProfissionalLodable} />
+    <PrivateRoute exact path="/dashboard" component={ProfilePageLodable} />
     {/* <Route exact path="/fundos-de-investimento" component={InvestmentFundListPageLodable} /> */}
   </Switch>
 );
