@@ -49,7 +49,7 @@ class CardProfile extends React.Component {
       userInfos: {
         ...this.state.userInfos,
         telefone,
-      }
+      },
     });
   };
 

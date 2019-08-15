@@ -2,6 +2,7 @@ import {
   GET_USER_INFOS,
   GET_USER_INFOS_SUCCESS,
   GET_USER_INFOS_ERROR,
+  POST_USER_INFOS,
 } from './constants';
 
 const initialState = {
@@ -31,6 +32,12 @@ function getUserInfosReducer(state = initialState, action) {
         loading: false,
         status: 'GET_USER_INFOS_ERROR',
         error: action.error,
+      };
+    case POST_USER_INFOS:
+      console.log(action);
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

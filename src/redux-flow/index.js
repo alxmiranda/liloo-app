@@ -2,7 +2,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogicMiddleware } from 'redux-logic';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import request from './../utils/requests';
+import request from '../utils/requests';
 import logicList from './logics';
 import reducers from './reducers';
 

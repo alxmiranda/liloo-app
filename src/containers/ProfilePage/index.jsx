@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import TemplateDashboard from './../../components/TemplateDashboard';
 import CardProfile from '../../components/CardProfile';
 import ListContractedServices from '../../components/ListContractedServices';
-import { getUserInfos } from './actions';
+import { getUserInfos, postUserInfos } from './actions';
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -18,13 +18,15 @@ class ProfilePage extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps, 'next');
+    console.log(this.props, '<<<');
     this.setState({
       userInfos: nextProps.userInfos,
     });
   }
 
-  updateUser = (data) => console.log('recebido', data);
+  updateUser = (data) => {
+    this.props.postUserInfosDispatch(data);
+  };
 
   render() {
     return (
@@ -56,6 +58,7 @@ export const mapStateToProps = ({ getUserInfosReducer }) => ({
 export function mapDispatchToProps(dispatch) {
   return {
     getUserInfosDispatch: params => dispatch(getUserInfos(params)),
+    postUserInfosDispatch: params => dispatch(postUserInfos(params)),
   };
 }
 

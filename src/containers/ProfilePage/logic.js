@@ -1,36 +1,45 @@
 import { createLogic } from 'redux-logic';
-import axios from 'axios';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { getUserInfosError, getUserInfosSuccess } from './actions';
-import { GET_USER_INFOS } from './constants';
-import { getUser } from './../../utils/user';
+import {
+  getUserInfosSuccess,
+  getUserInfosError,
+  postUserInfosSuccess,
+  postUserInfosError,
+} from './actions';
+import { GET_USER_INFOS, POST_USER_INFOS } from './constants';
 
 const getUserInfosLogic = createLogic({
   type: GET_USER_INFOS,
   cancelType: LOCATION_CHANGE,
   latest: true,
 
-  process({ action }, dispatch, done) {
-    const requestURL = `${process.env.API_URL}/registerdetails`;
-    const data = getUser();
+  process({ request }, dispatch, done) {
+    request({ url: '/registerdetails' })
+      .then(success => dispatch(getUserInfosSuccess(success.data.data)))
+      .catch(error => dispatch(getUserInfosError(error)))
+      .then(done);
+  },
+});
 
-    const options = {
-      headers: {
-        accessKey: data.data.perfilAPI.accessKey,
-        perfil: data.data.perfilAPI.perfil,
+export const postUserInfosLogic = createLogic({
+  type: POST_USER_INFOS,
+  cancelType: LOCATION_CHANGE,
+  latest: true,
+
+  process({ action, request }, dispatch, done) {
+    console.log('logic', action);
+    request({
+      url: '/registerdetails',
+      method: 'POST',
+      data: {
+        ...action.params,
+        ddd: action.params.telefone.split(' ')[0],
+        telefone: action.params.telefone.split(' ')[1],
       },
-    };
-    axios.get(requestURL, options).then((success) => {
-      if (success.data.codeRestult === 1) {
-        dispatch(getUserInfosError(success.data.errorMsg));
-      } else {
-        // saveUser(success.data);
-        console.log(success, '>>>><<');
-        dispatch(getUserInfosSuccess(success.data.data));
-      }
-    }).catch((error) => {
-      dispatch(getUserInfosError(error));
-    }).then(done);
+    })
+      .then(success => dispatch(postUserInfosSuccess(success.data.data)))
+      .catch(error => dispatch(postUserInfosError(error)))
+      .then(done);
   },
 });
 
