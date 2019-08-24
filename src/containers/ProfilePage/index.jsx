@@ -18,7 +18,6 @@ class ProfilePage extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log(this.props, '<<<');
     this.setState({
       userInfos: nextProps.userInfos,
     });

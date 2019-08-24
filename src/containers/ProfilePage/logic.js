@@ -14,10 +14,12 @@ const getUserInfosLogic = createLogic({
   latest: true,
 
   process({ request }, dispatch, done) {
-    request({ url: '/registerdetails' })
-      .then(success => dispatch(getUserInfosSuccess(success.data.data)))
-      .catch(error => dispatch(getUserInfosError(error)))
-      .then(done);
+    const options = { url: '/registerdetails' };
+    request(
+      options,
+      success => dispatch(getUserInfosSuccess(success.data.data)),
+      error => dispatch(getUserInfosError(error)),
+    ).then(() => done());
   },
 });
 
@@ -27,8 +29,7 @@ export const postUserInfosLogic = createLogic({
   latest: true,
 
   process({ action, request }, dispatch, done) {
-    console.log('logic', action);
-    request({
+    const options = {
       url: '/registerdetails',
       method: 'POST',
       data: {
@@ -36,10 +37,12 @@ export const postUserInfosLogic = createLogic({
         ddd: action.params.telefone.split(' ')[0],
         telefone: action.params.telefone.split(' ')[1],
       },
-    })
-      .then(success => dispatch(postUserInfosSuccess(success.data.data)))
-      .catch(error => dispatch(postUserInfosError(error)))
-      .then(done);
+    };
+    request(
+      options,
+      success => dispatch(postUserInfosSuccess(success.data.data)),
+      error => dispatch(postUserInfosError(error)),
+    ).then(() => done());
   },
 });
 

@@ -57,7 +57,7 @@ class CardProfile extends React.Component {
     const { ddd, email, nome, perfil, situacao, telefone } = this.state.userInfos;
     return (
       <div className="container">
-        <div className={`card-profile ${perfil}`}>
+        <div className={`card-profile ${perfil && perfil}`}>
           <div className="card-profile__col">
             <div className="card-profile__photo">
               <figure>

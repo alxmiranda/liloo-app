@@ -48,7 +48,6 @@ class Header extends React.Component {
           {            
             value => (
               <header className="header">
-                {console.log(value)}
                 <button onClick={() => value.methods.logout()}>Troca</button>
                 <div className="header__container">
                   <button onClick={() => this.toggleMenu()} className={`btn--icon ${this.state.openMenu ? 'btn--close' : ''}`}>

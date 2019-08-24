@@ -3,73 +3,33 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Auth, { AuthContext } from '../Login/Auth'
+
 import { getUser } from '../../utils/user';
+import { connect } from 'react-redux';
 
-class PrivateRoute extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount = () => {
-    console.log('oooo');
-  }
-
-  componentAuth = () => (
-    <Route component={this.props.component} />
-  )
-
-  render() {
-    return (
-      <Auth>
-        <AuthContext.Consumer>
-          {
-            value => {
-              console.log(!value.logged)
-              return (
-              <Route
-                {...this.props}
-                render={props =>
-                  (
-                    !value.logged ? (
-                      <Redirect
-                        to={{
-                          pathname: '/entrar',
-                          state: { from: props.location },
-                        }}
-                      />
-                    ) : this.componentAuth(this.props)
-                  )
-                }
-              />
+const PrivateRoute = ({ component: Component, ...rest, error }) => {
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return (
+          !getUser() ? (
+            <Redirect
+              to={{
+                pathname: '/entrar',
+                  state: { from: props.location },
+                }}
+            />
+            ) : (<Component {...props} />)
               )
             }
           }
-        </AuthContext.Consumer>
-      </Auth>
-    );
-  }
+    />
+  )
 }
 
-export default PrivateRoute;
+export const mapStateToProps = ({ getUserInfosReducer }) => ({
+  error: getUserInfosReducer.error,
+});
 
-// const PrivateRoute = ({ component: Component, ...rest }) =>
-//   (
-//     <Route
-//       {...rest}
-//       render={props =>
-//         (
-//           !getUser() ? (
-//             <Redirect
-//               to={{
-//                 pathname: '/entrar',
-//                 state: { from: props.location },
-//               }}
-//             />
-//           ) : (<Component {...props} />)
-//         )
-//       }
-//     />
-//   );
-
-// export default PrivateRoute;
+export default connect(mapStateToProps)(PrivateRoute);

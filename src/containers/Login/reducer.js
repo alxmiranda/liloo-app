@@ -22,7 +22,7 @@ function sendLoginReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        userInfo: Object.assign(state, action),
+        userInfo: Object.assign(state.userInfo, action.success.data),
         status: 'SEND_LOGIN_SUCCESS',
       };
     case SEND_LOGIN_ERROR:
