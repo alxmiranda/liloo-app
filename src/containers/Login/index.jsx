@@ -5,6 +5,10 @@ import { sendLogin } from './actions';
 import Login from '../../components/LoginAndRegister/Login/';
 
 class LoginPage extends Component {
+  componentWillMount() {
+    console.log(this.props, 'will');
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'SEND_LOGIN_SUCCESS') {
       this.props.history.push('/dashboard');

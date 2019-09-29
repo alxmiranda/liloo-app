@@ -34,7 +34,6 @@ function getUserInfosReducer(state = initialState, action) {
         error: action.error,
       };
     case POST_USER_INFOS:
-      console.log(action);
       return {
         ...state,
         loading: true,

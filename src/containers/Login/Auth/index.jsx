@@ -1,6 +1,6 @@
 import React from 'react';
-import { deleteUser, getUser } from './../../../utils/user';
 import { withRouter } from 'react-router-dom';
+import { deleteUser, getUser } from './../../../utils/user';
 
 export const AuthContext = React.createContext({});
 
@@ -9,27 +9,26 @@ export class Auth extends React.Component {
     super(props);
     this.state = {
       logged: false,
-      userInfo: {}
-    }
+      userInfo: {},
+    };
   }
 
   componentDidMount() {
     this.setUser();
   }
 
-  getUser = () => {
-    return getUser();
-  }
+  getUser = () => getUser();
 
   setUser = () => {
-    if(this.getUser()) {
+    if (this.getUser()) {
       this.setState({
         ...this.state,
+        logged: true,
         userInfo: {
           ...this.state.userInfo,
-          ...this.getUser().data,
-        }
-      })
+          ...this.getUser(),
+        },
+      });
     }
   }
 
@@ -42,14 +41,14 @@ export class Auth extends React.Component {
     this.setState({
       ...this.state,
       logged: false,
-    }, () => this.redirect())
+    }, () => this.redirect());
   }
 
   render() {
     const {
       login,
       logout,
-      redirect
+      redirect,
     } = this;
 
     const {
@@ -67,13 +66,14 @@ export class Auth extends React.Component {
         redirect,
       },
       logged,
-    }
+    };
 
     return (
       <AuthContext.Provider value={dataValue}>
         {children}
+        {console.log(this.props)}
       </AuthContext.Provider>
-    )
+    );
   }
 }
 

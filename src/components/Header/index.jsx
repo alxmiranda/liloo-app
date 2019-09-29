@@ -39,13 +39,13 @@ class Header extends React.Component {
         <Link className="btn" to="entrar">entrar</Link>
         <Link className="btn btn--link" to="cadastrar" onClick={e => e.preventDefault()}type="button">Cadastrar</Link>
       </div>
-    )
+    );
   }
   render() {
     return (
       <Auth>
         <AuthContext.Consumer>
-          {            
+          {
             value => (
               <header className="header">
                 <button onClick={() => value.methods.logout()}>Troca</button>
