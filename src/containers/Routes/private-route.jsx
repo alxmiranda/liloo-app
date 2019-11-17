@@ -4,7 +4,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import { getUser } from '../../utils/user';
+import { isAuthenticated } from '../../utils/user';
 import { connect } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, ...rest, error }) => {
@@ -13,17 +13,19 @@ const PrivateRoute = ({ component: Component, ...rest, error }) => {
       {...rest}
       render={props => {
         return (
-          !getUser() ? (
-            <Redirect
-              to={{
-                pathname: '/entrar',
-                  state: { from: props.location },
-                }}
-            />
-            ) : (<Component {...props} />)
+          isAuthenticated() ? 
+              (<Component {...props} />) :
+              (
+                <Redirect
+                  to={{
+                    pathname: '/entrar',
+                      state: { from: props.location },
+                    }}
+                />
               )
-            }
+            )
           }
+        }
     />
   )
 }

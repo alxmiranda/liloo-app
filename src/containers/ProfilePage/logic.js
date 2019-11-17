@@ -14,7 +14,7 @@ const getUserInfosLogic = createLogic({
   latest: true,
 
   process({ request }, dispatch, done) {
-    const options = { url: '/registerdetails' };
+    const options = { method: 'GET', url: '/registerdetails' };
     request(
       options,
       success => dispatch(getUserInfosSuccess(success.data.data)),

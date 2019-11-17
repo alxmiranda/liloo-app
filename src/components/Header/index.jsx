@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaSearch } from 'react-icons/fa';
 import Nav from './../Nav';
 import LogoLiloo from './../../assets/Liloo.png';
-import Auth, { AuthContext } from './../../containers/Login/Auth'
+import Auth, { AuthContext } from './../../containers/Login/Auth';
 
 class Header extends React.Component {
   constructor(props) {

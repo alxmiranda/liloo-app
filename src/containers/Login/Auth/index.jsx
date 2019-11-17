@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { deleteUser, getUser } from './../../../utils/user';
+import { sendLogout } from './../actions';
 
 export const AuthContext = React.createContext({});
 
@@ -34,6 +36,7 @@ export class Auth extends React.Component {
 
   redirect = () => {
     deleteUser();
+    this.props.sendLogoutDispatch();
     this.props.history.push('/entrar');
   }
 
@@ -71,10 +74,16 @@ export class Auth extends React.Component {
     return (
       <AuthContext.Provider value={dataValue}>
         {children}
-        {console.log(this.props)}
       </AuthContext.Provider>
     );
   }
 }
 
-export default withRouter(Auth);
+// export default withRouter(Auth);
+export function mapDispatchToProps(dispatch) {
+  return {
+    sendLogoutDispatch: () => dispatch(sendLogout()),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(Auth));

@@ -13,13 +13,14 @@ class ProfilePage extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   this.props.getUserInfosDispatch();
-  // }
+  componentDidMount = () => {
+    this.props.getUserInfosDispatch();
+  }
 
   componentWillReceiveProps = (nextProps) => {
+    const { userInfos } = nextProps;
     this.setState({
-      userInfos: {},
+      userInfos: { ...userInfos },
     });
   }
 

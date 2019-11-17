@@ -2,6 +2,7 @@ import {
   SEND_LOGIN,
   SEND_LOGIN_SUCCESS,
   SEND_LOGIN_ERROR,
+  SEND_LOGOUT,
 } from './constants';
 
 const initialState = {
@@ -22,6 +23,7 @@ function sendLoginReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        logged: true,
         userInfo: Object.assign(state.userInfo, action.success.data),
         status: 'SEND_LOGIN_SUCCESS',
       };
@@ -29,8 +31,16 @@ function sendLoginReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        logged: false,
         status: 'SEND_LOGIN_ERROR',
         error: action.error,
+      };
+    case SEND_LOGOUT:
+      return {
+        ...state,
+        logged: false,
+        status: 'PENDING',
+        userInfo: {},
       };
     default:
       return state;

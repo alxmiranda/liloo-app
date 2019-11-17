@@ -5,11 +5,6 @@ import { sendRegister } from './actions';
 import Register from '../../components/LoginAndRegister/Register/';
 
 export class RegisterPage extends Component {
-
-  componentWillMount() {
-    console.log(this.props);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === 'SEND_REGISTER_SUCCESS') {
       this.props.history.push('/entrar');

@@ -6,7 +6,9 @@ import Login from '../../components/LoginAndRegister/Login/';
 
 class LoginPage extends Component {
   componentWillMount() {
-    console.log(this.props, 'will');
+    // if (this.props.logged) {
+    //   this.props.history.push('/dashboard');
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,6 +33,7 @@ class LoginPage extends Component {
 
 export const mapStateToProps = ({ sendLoginReducer }) => ({
   sendLogin: sendLoginReducer,
+  logged: sendLoginReducer,
   status: sendLoginReducer.status,
   loadingsendLogin: sendLoginReducer.loading,
   error: sendLoginReducer.error,

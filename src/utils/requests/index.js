@@ -1,20 +1,42 @@
 import axios from 'axios';
-import { getUser } from '../user';
+import { getAccessKey, getProfile } from '../user';
 import handleErrorRequest from './handleError';
 
-const dataUser = getUser();
+// const config = {
+//   baseURL: `${process.env.API_URL}`,
+//   // headers: {
+//   //   accessKey: User && User.perfilAPI.accessKey,
+//   //   perfil: User &&  User.perfilAPI.perfil,
+//   // },
+// };
 
-const config = {
+const api = axios.create({
   baseURL: `${process.env.API_URL}`,
-  headers: {
-    accessKey: dataUser && dataUser.perfilAPI.accessKey,
-    perfil: dataUser && dataUser.perfilAPI.perfil,
-  },
+});
+
+const requestUtil = (options, cbSuccess, cbError) => {
+  api.interceptors.request.use(async (config) => {
+    const setConfig = config;
+    const accessKey = getAccessKey();
+    const profile = getProfile();
+
+    if (accessKey && profile) {
+      setConfig.headers.accessKey = accessKey;
+      setConfig.headers.perfil = profile;
+    }
+
+    for (prop in options) {
+      const nobj = {};
+      nobj[prop] = obj[prop]
+      setConfig.headers[prop] = options[prop]
+    }
+
+    return setConfig;
+  });
+  return api()
+    .then(success => cbSuccess(success))
+    .catch(error => console.log(error));
 };
 
-const requestUtil = (options, cbSuccess, cbError) =>
-  axios({ ...config, ...options })
-    .then(success => cbSuccess(success))
-    .catch(error => cbError(handleErrorRequest(error)));
-
 export default requestUtil;
+

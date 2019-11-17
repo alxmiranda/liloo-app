@@ -15,7 +15,6 @@ import MenuOutros from './../../assets/home/icon-menu-outros.svg';
 let open = false;
 
 const openMenu = (e) => {
-  console.log(e);
   // e.target.preventDefault();
   if (!open) {
     open = true;
