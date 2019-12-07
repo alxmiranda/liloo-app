@@ -43,40 +43,33 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <Auth>
-        <AuthContext.Consumer>
-          {
-            value => (
-              <header className="header">
-                <button onClick={() => value.methods.logout()}>Troca</button>
-                <div className="header__container">
-                  <button onClick={() => this.toggleMenu()} className={`btn--icon ${this.state.openMenu ? 'btn--close' : ''}`}>
-                    {!this.state.openMenu ? <FaBars /> : <FaTimes />}
-                  </button>
-                  <div className="header__brand">
-                    <img src={LogoLiloo} alt="Logotipo da liloo" className="brand" />
-                  </div>
-                  <nav className="header__dynamic">
-                    {
-                      value.logged ? this.headerLogged() : this.headerUnLogged()
-                    }
-                  </nav>
-                  <div className="header__search">
-                    <input type="text" placeholder="Buscar" />
-                    <button className="btn--icon">
-                      <FaSearch />
-                    </button>
-                  </div>
-                </div>
-                <Nav
-                  open={this.state.openMenu}
-                  toggleMenu={this.toggleMenu}
-                />
-              </header>
-            )
-          }
-        </AuthContext.Consumer>
-      </Auth>
+      <header className="header">
+        <button onClick={() => console.log('desloga')}>Troca</button>
+        <div className="header__container">
+          <button onClick={() => this.toggleMenu()} className={`btn--icon ${this.state.openMenu ? 'btn--close' : ''}`}>
+            {!this.state.openMenu ? <FaBars /> : <FaTimes />}
+          </button>
+          <div className="header__brand">
+            <img src={LogoLiloo} alt="Logotipo da liloo" className="brand" />
+          </div>
+          <nav className="header__dynamic">
+            {
+              // value.logged ? this.headerLogged() : this.headerUnLogged()
+              this.headerLogged()
+            }
+          </nav>
+          <div className="header__search">
+            <input type="text" placeholder="Buscar" />
+            <button className="btn--icon">
+              <FaSearch />
+            </button>
+          </div>
+        </div>
+        <Nav
+          open={this.state.openMenu}
+          toggleMenu={this.toggleMenu}
+        />
+      </header>
     );
   }
 }

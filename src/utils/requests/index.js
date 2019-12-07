@@ -15,24 +15,25 @@ const api = axios.create({
 });
 
 const requestUtil = (options, cbSuccess, cbError) => {
-  api.interceptors.request.use(async (config) => {
-    const setConfig = config;
-    const accessKey = getAccessKey();
-    const profile = getProfile();
+  // api.interceptors.request.use(async (config) => {
+  //   const setConfig = config;
+  //   const accessKey = getAccessKey();
+  //   const profile = getProfile();
 
-    if (accessKey && profile) {
-      setConfig.headers.accessKey = accessKey;
-      setConfig.headers.perfil = profile;
-    }
+  //   if (accessKey && profile) {
+  //     setConfig.headers.accessKey = accessKey;
+  //     setConfig.headers.perfil = profile;
+  //   }
 
-    for (prop in options) {
-      const nobj = {};
-      nobj[prop] = obj[prop]
-      setConfig.headers[prop] = options[prop]
-    }
+  //   for (prop in options) {
+  //     const nobj = {};
+  //     nobj[prop] = obj[prop]
+  //     setConfig.headers[prop] = options[prop];
+  //     console.log(setConfig);
+  //   }
 
-    return setConfig;
-  });
+  //   return setConfig;
+  // });
   return api()
     .then(success => cbSuccess(success))
     .catch(error => console.log(error));

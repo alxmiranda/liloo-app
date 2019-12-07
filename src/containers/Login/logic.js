@@ -22,6 +22,7 @@ const sendLoginLogic = createLogic({
       options,
       (success) => {
         saveUser(success.data.data);
+        console.log(success);
         dispatch(sendLoginSuccess(success.data));
       },
       error => dispatch(sendLoginError(error)),
