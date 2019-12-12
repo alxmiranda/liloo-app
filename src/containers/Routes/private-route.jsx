@@ -4,16 +4,16 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import { isAuthenticated } from '../../utils/user';
 import { connect } from 'react-redux';
+import { isAuthenticated } from '../../services/auth';
 
-const PrivateRoute = ({ component: Component, ...rest, error }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props) => {
         return (
-          isAuthenticated() ? 
+          isAuthenticated() ?
               (<Component {...props} />) :
               (
                 <Redirect

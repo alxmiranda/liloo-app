@@ -2,7 +2,6 @@ import { createLogic } from 'redux-logic';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { sendLoginError, sendLoginSuccess } from './actions';
 import { SEND_LOGIN } from './constants';
-import { saveUser } from './../../utils/user';
 
 const sendLoginLogic = createLogic({
   type: SEND_LOGIN,
@@ -18,16 +17,10 @@ const sendLoginLogic = createLogic({
         senha: action.params.senha,
       },
     };
-    request(
-      options,
-      (success) => {
-        saveUser(success.data.data);
-        console.log(success);
-        dispatch(sendLoginSuccess(success.data));
-      },
-      error => dispatch(sendLoginError(error)),
-      false,
-    ).then(() => done());
+    request(options)
+      .then(success => dispatch(sendLoginSuccess(success.data)))
+      .catch(error => dispatch(sendLoginError(error)))
+      .then(done);
   },
 });
 
