@@ -12,31 +12,31 @@ import PrivateRoute from './private-route';
 export const HomeLodable = Loadable({
   loader: () =>
   import('containers/Site/Home' /* webpackChunkName: "Home" */),
-  loading: () => <div>Loading</div>,
+  loading: () => <div>Carregando</div>,
 });
 
 export const PageProfissionalLodable = Loadable({
   loader: () =>
   import('containers/Site/PageProfissional' /* webpackChunkName: "PageProfissionalLodable" */),
-  loading: () => <div>Loading</div>,
+  loading: () => <div>Carregando</div>,
 });
 
 export const RegisterPageLodable = Loadable({
   loader: () =>
   import('containers/Register' /* webpackChunkName: "Register" */),
-  loading: () => <div>Loading</div>,
+  loading: () => <div>Carregando</div>,
 });
 
 export const LoginPageLodable = Loadable({
   loader: () =>
   import('containers/Login' /* webpackChunkName: "Login" */),
-  loading: () => <div>Loading</div>,
+  loading: () => <div>Carregando</div>,
 });
 
 export const ProfilePageLodable = Loadable({
   loader: () =>
   import('containers/ProfilePage' /* webpackChunkName: "ProfilePage" */),
-  loading: () => <div>Loading</div>,
+  loading: () => <div>Carregando</div>,
 });
 
 export default () => (

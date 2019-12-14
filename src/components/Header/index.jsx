@@ -27,22 +27,18 @@ import LogoLiloo from './../../assets/Liloo.png';
 //     }
 //   }
 
-  const headerLogged = () => {
-    return (
-      <div className="btn-group">
-        <Link className="btn" to="entrar">Publicar anuncio</Link>
-      </div>
-    )
-  }
+  const headerLogged = () => (
+    <div className="btn-group">
+      <button className="btn" to="entrar">Publicar anuncio</button>
+    </div>
+  );
 
-//   headerUnLogged = () => {
-//     return (
-//       <div className="btn-group">
-//         <Link className="btn" to="entrar">entrar</Link>
-//         <Link className="btn btn--link" to="cadastrar" onClick={e => e.preventDefault()}type="button">Cadastrar</Link>
-//       </div>
-//     );
-//   }
+  const headerUnLogged = () => (
+    <div className="btn-group">
+      <Link className="btn" to="entrar">entrar</Link>
+      <button className="btn btn--link" to="cadastrar" onClick={e => window.scrollTo(0, 3000)}type="button">Cadastrar</button>
+    </div>
+  );
 
 //   logout = () => {
 //     const dispatch = useDispatch();
@@ -82,8 +78,8 @@ import LogoLiloo from './../../assets/Liloo.png';
 //   }
 // }
 const Header = () => {
-  // const dispatch = useDispatch();
   // const history = useHistory();
+  const dispatch = useDispatch();
   const [openMenu, setOpenMenu] = useState(false);
   const { getUserInfosReducer } = useSelector(state => state);
   const { nome, perfil } = getUserInfosReducer.userInfos;
@@ -98,6 +94,7 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
+    dispatch(sendLogout());
   };
 
   return (
@@ -109,15 +106,14 @@ const Header = () => {
         <div className="header__brand">
           <img src={LogoLiloo} alt="Logotipo da liloo" className="brand" />
         </div>
-        <nav className="header__dynamic">
+        <nav className={`header__dynamic ${!nome && 'hide'}`}>
           <div className="header__perfil">
             <div className="header__perfil-photo" />
             <strong>{nome}</strong>
             <button onClick={handleLogout}>sair</button>
           </div>
           {
-            headerLogged()
-            // headerLogged()
+            nome ? headerLogged() : headerUnLogged()
           }
         </nav>
         <div className="header__search">

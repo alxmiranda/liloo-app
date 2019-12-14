@@ -96,7 +96,12 @@
       order: 4;
       border-top: 1px solid $gray-light;
       border-bottom: 1px solid $gray-light;
-      
+      &.hide {
+        justify-content: flex-end;
+        .header__perfil {
+          display: none;
+        }
+      }
       .header__perfil {
         width: 100%;
         display: flex;

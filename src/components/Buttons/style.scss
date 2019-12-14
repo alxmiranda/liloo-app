@@ -139,9 +139,8 @@
 
   .btn {
     margin-left: $margin;
-
-    &:first-of-type {
-      margin-left: 0;
+    &:active {
+      background: transparent;
     }
   }
 }

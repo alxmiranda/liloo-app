@@ -29,11 +29,16 @@ class Login extends Component {
   render() {
     const { error } = this.props;
     return (
-      <Template title="Acesse sua conta" btnSupport={<Link className="btn btn-link" to="/cadastro">Cadastre-se</Link>}>
-        <Button className="btn-login-fb">Facebook</Button>
+      <Template title="Acesse sua conta" btnSupport={
+        <nav className="group-button">
+          <Link className="btn" to="/cadastro/profissional">Cadastro profissional</Link>
+          <Link className="btn btn--link" to="/cadastro/cliente">Cadastro cliente</Link>
+        </nav>
+      }>
+        {/* <Button className="btn-login-fb">Facebook</Button>
         <P>
           <span>ou</span>
-        </P>
+        </P> */}
         <div>
           <Input
             type="text"

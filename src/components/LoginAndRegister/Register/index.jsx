@@ -13,7 +13,6 @@ export default class Register extends Component {
       sobreNome: '',
       email: '',
       senha: '',
-      confirmaSenha: '',
     };
   }
 
@@ -30,7 +29,12 @@ export default class Register extends Component {
 
   render() {
     return (
-      <Template title="Crie sua conta" btnSupport={<Link className="btn btn-link" to="/entrar">Já esta registrado?</Link>}>
+      <Template title="Crie sua conta" btnSupport={
+        <nav className="group-button">
+          <Link className="btn btn-link" to="/entrar">Já esta registrado?</Link>
+        </nav>
+        }
+      >
         <div>
           <Input
             type="text"
