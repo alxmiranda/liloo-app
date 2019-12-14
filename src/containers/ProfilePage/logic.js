@@ -15,11 +15,10 @@ const getUserInfosLogic = createLogic({
 
   process({ request }, dispatch, done) {
     const options = { method: 'GET', url: '/registerdetails' };
-    request(
-      options,
-      success => dispatch(getUserInfosSuccess(success.data.data)),
-      error => dispatch(getUserInfosError(error)),
-    ).then(() => done());
+    request(options)
+      .then(success => dispatch(getUserInfosSuccess(success.data.data)))
+      .catch(error => dispatch(getUserInfosError(error)))
+      .then(done);
   },
 });
 

@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 export const TOKEN_KEY = 'INFO_LILOO';
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
 export const getUser = () => JSON.parse(localStorage.getItem(TOKEN_KEY));
@@ -9,5 +11,6 @@ export const login = (data) => {
 };
 
 export const logout = () => {
+  window.location.href = '#/entrar';
   localStorage.removeItem(TOKEN_KEY);
 };

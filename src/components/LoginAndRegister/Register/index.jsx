@@ -30,7 +30,7 @@ export default class Register extends Component {
 
   render() {
     return (
-      <Template title="Crie sua conta" btnSupport={<Link className="btn btn-link" to="/login">Já esta registrado?</Link>}>
+      <Template title="Crie sua conta" btnSupport={<Link className="btn btn-link" to="/entrar">Já esta registrado?</Link>}>
         <div>
           <Input
             type="text"
@@ -58,13 +58,6 @@ export default class Register extends Component {
             placeholder="senha"
             name="senha"
             value={this.state.senha}
-            onChange={this.handleChange}
-          />
-          <Input
-            type="password"
-            placeholder="confirmar senha"
-            name="confirmaSenha"
-            value={this.state.confirmaSenha}
             onChange={this.handleChange}
           />
           <Button type="button" onClick={() => this.sendFormData(this.state)}>Cadastrar</Button>
