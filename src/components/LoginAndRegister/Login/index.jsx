@@ -54,7 +54,9 @@ class Login extends Component {
             value={this.state.senha}
             onChange={this.handleChange}
           />
-          <Button onClick={() => this.props.sendLogin(this.state)}>Entrar</Button>
+          <Button disalbed={this.props.loading} onClick={() => this.props.sendLogin(this.state)}>
+            {this.props.loading ? 'aguarde...' : 'Entrar'}
+          </Button>
           <div className={`feedback ${error && 'show'}`}>
             <Strong className={error ? 'feedback__error' : 'feedback__success'}>{error}</Strong>
           </div>

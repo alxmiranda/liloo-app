@@ -64,7 +64,9 @@ export default class Register extends Component {
             value={this.state.senha}
             onChange={this.handleChange}
           />
-          <Button type="button" onClick={() => this.sendFormData(this.state)}>Cadastrar</Button>
+          <Button type="button" onClick={() => this.sendFormData(this.state)}>
+            {this.props.loading ? 'aguarde...' : 'Cadastrar'}
+          </Button>
         </div>
       </Template>
     );

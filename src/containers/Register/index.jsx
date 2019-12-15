@@ -21,6 +21,7 @@ export class RegisterPage extends Component {
   render() {
     return (
       <Register
+        loading={this.props.loading}
         sendRegister={this.sendRegisterFun}
       />
     );
@@ -30,7 +31,7 @@ export class RegisterPage extends Component {
 export const mapStateToProps = ({ sendRegisterReducer }) => ({
   sendRegister: sendRegisterReducer,
   status: sendRegisterReducer.status,
-  loadingsendRegister: sendRegisterReducer.loading,
+  loading: sendRegisterReducer.loading,
 });
 
 export function mapDispatchToProps(dispatch) {

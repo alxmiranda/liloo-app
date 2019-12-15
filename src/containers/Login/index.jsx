@@ -9,7 +9,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { sendLoginReducer } = useSelector(state => state);
-  const { logged, userInfo } = sendLoginReducer;
+  const { logged, userInfo, loading } = sendLoginReducer;
 
   const handleLogin = (data) => {
     dispatch(sendLogin(data));
@@ -22,6 +22,7 @@ const LoginPage = () => {
 
   return (
     <Login
+      loading={loading}
       error={sendLoginReducer.error}
       sendLogin={handleLogin}
     />
