@@ -13,13 +13,17 @@ class CardProfile extends React.Component {
         perfil: '',
         situacao: '',
         telefone: '',
+        cpf: '',
       },
     };
   }
 
   componentWillReceiveProps = (nextProps) => {
     this.setState({
-      userInfos: nextProps.userInfos,
+      userInfos: {
+        ...this.state.userInfos,
+        ...nextProps.userInfos,
+      },
     });
   };
 
@@ -105,6 +109,7 @@ class CardProfile extends React.Component {
           className="btn-save-profile"
           onClick={() => this.updateUser(this.state.userInfos)}
         >
+          {console.log(this.state)}
           Salvar alterações
         </Button>
       </div>

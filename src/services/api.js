@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAccessKey, getProfile } from './auth';
 
 const api = axios.create({
-  baseURL: 'https://liloo-api.herokuapp.com',
+  baseURL: process.env.API_URL,
 });
 
 api.interceptors.request.use(async (config) => {
